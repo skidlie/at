@@ -6,17 +6,19 @@
     <title>Will You Be My Valentine?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary-color: #ff4d6d;
             --secondary-color: #ff8fa3;
-            --accent-color: #c9184a;
+            --accent-color: #a4133c; /* Darkened slightly for better text contrast */
             --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
             --white: #ffffff;
-            --font-heading: 'Great Vibes', cursive;
-            --font-body: 'Poppins', sans-serif;
+            
+            /* UPDATED FONTS */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Cormorant Garamond', serif;
         }
 
         * {
@@ -31,7 +33,7 @@
             overflow: hidden;
             font-family: var(--font-body);
             background: var(--bg-gradient);
-            user-select: none; /* Prevent selection during game */
+            user-select: none;
         }
 
         #game-container {
@@ -56,22 +58,26 @@
         }
 
         #score-board {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px;
+            border-radius: 50px; /* More oval for elegance */
+            box-shadow: 0 4px 20px rgba(164, 19, 60, 0.15);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            font-family: var(--font-body);
             font-weight: 600;
+            font-size: 1.3rem; /* Larger font */
+            letter-spacing: 1px;
             color: var(--accent-color);
+            text-transform: uppercase;
         }
 
         .progress-bar {
             width: 150px;
-            height: 15px;
+            height: 12px;
             background: #ffe5ec;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--secondary-color);
         }
@@ -94,9 +100,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 240, 243, 0.95); /* Slightly more opaque for readability */
+            background: rgba(255, 240, 243, 0.96); /* High opacity for magazine look */
             z-index: 20;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1); /* Smooth luxury easing */
         }
 
         .screen.hidden {
@@ -111,40 +117,61 @@
             display: flex;
         }
 
+        /* TYPOGRAPHY UPDATES */
         h1 {
             font-family: var(--font-heading);
-            font-size: 5rem;
+            font-size: 4.5rem; /* Large editorial size */
+            font-weight: 700;
+            font-style: italic; /* The "Love Story" look */
             color: var(--accent-color);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            text-shadow: none; /* Removed cheap shadow */
+            margin-bottom: 25px;
             text-align: center;
-            line-height: 1.2;
+            line-height: 1.1;
             padding: 0 20px;
+            letter-spacing: -1px; /* Tight editorial spacing */
         }
 
         p {
-            font-size: 1.2rem;
+            font-family: var(--font-body);
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
             color: #590d22;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-align: center;
             padding: 0 20px;
+            max-width: 800px;
         }
 
-        .btn {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-family: var(--font-body);
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 5px 15px rgba(201, 24, 74, 0.3);
+        .sub-text {
+            font-size: 1.5rem;
+            opacity: 0.8;
         }
+
+        /* BUTTONS - LUXURY STYLE */
+        .btn {
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-family: var(--font-heading); /* Serif font in buttons is very chic */
+            font-weight: 700;
+            text-transform: uppercase; /* The "Expensive Brand" look */
+            letter-spacing: 3px; /* Wide spacing */
+            border: none;
+            border-radius: 0; /* Sharp corners or very slight radius = more expensive */
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px -10px rgba(164, 19, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Slight rounding for a softer feel */
+        .btn { border-radius: 4px; }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(201, 24, 74, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -10px rgba(164, 19, 60, 0.5);
         }
 
         .btn:active {
@@ -152,42 +179,45 @@
         }
 
         #start-btn {
-            background: var(--primary-color);
+            background: var(--accent-color);
             color: white;
         }
 
         .buttons {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             flex-wrap: wrap;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .yes-btn {
-            background: #2dc653;
+            background: #06d6a0; /* Keeping green but slightly richer */
+            background: linear-gradient(45deg, #11998e, #38ef7d);
             color: white;
-            font-size: 1.5rem;
-            padding: 20px 60px;
+            padding: 20px 70px;
+            font-size: 1.4rem;
         }
 
         .no-btn {
             background: #ffb703;
+            background: linear-gradient(45deg, #f2994a, #f2c94c);
             color: white;
-            position: relative; /* Essential for the moving effect */
-            transition: all 0.2s;
+            position: relative;
+            opacity: 0.9;
         }
 
         /* Animations */
         @keyframes heartbeat {
             0% { transform: scale(1); }
-            15% { transform: scale(1.1); }
+            15% { transform: scale(1.05); } /* Subtler pulse for elegance */
             30% { transform: scale(1); }
-            45% { transform: scale(1.1); }
+            45% { transform: scale(1.05); }
             60% { transform: scale(1); }
         }
 
         .proposal-content h1 {
-            animation: heartbeat 2s infinite;
+            animation: heartbeat 3s infinite ease-in-out;
         }
     </style>
 </head>
@@ -198,7 +228,7 @@
 
         <div id="ui-layer">
             <div id="score-board">
-                <span>❤️ Love Meter: </span>
+                <span>Love Meter</span>
                 <div class="progress-bar">
                     <div id="love-fill"></div>
                 </div>
@@ -206,15 +236,15 @@
         </div>
 
         <div id="start-screen" class="screen active">
-            <h1>Catch the Love Emojis!</h1>
-            <p>Catch enough hearts to reveal a special question...</p>
+            <h1>Catch the Love</h1>
+            <p>Collect enough hearts to reveal a secret question...</p>
             <button id="start-btn" class="btn">Start Game Chudail</button>
         </div>
 
         <div id="proposal-screen" class="screen hidden">
             <div class="proposal-content" style="text-align: center;">
-                <h1>Will You Be My Valentine Ankita?</h1>
-                <p class="sub-text">You caught my heart! Now I have to ask...</p>
+                <h1>Will You Be My Valentine... Ankita?</h1>
+                <p class="sub-text">You caught my heart! Now I must ask...</p>
                 <div class="buttons">
                     <button id="yes-btn" class="btn yes-btn">YES!</button>
                     <button id="no-btn" class="btn no-btn">No</button>
@@ -224,7 +254,7 @@
 
         <div id="celebration-screen" class="screen hidden">
             <h1>Happy Propose Day Ankita Madam! 💍</h1>
-            <p>I love you !</p>
+            <p>I love you!</p>
         </div>
     </div>
 
@@ -233,12 +263,12 @@
         const ctx = canvas.getContext('2d');
 
         // Game State
-        let gameState = 'START'; // START, PLAYING, WON, PROPOSAL, END
+        let gameState = 'START'; 
         let score = 0;
-        const WIN_SCORE = 5; // Hearts needed to fill the meter
+        const WIN_SCORE = 5; 
         let player;
         let hearts = [];
-        let particles = []; // For effects
+        let particles = []; 
         let animationId;
         let loveMeter = document.getElementById('love-fill');
 
@@ -256,7 +286,6 @@
             canvas.height = window.innerHeight;
             if (player) {
                  player.y = canvas.height - 100;
-                 // Keep player within bounds on resize
                  if(player.x + player.w > canvas.width) player.x = canvas.width - player.w;
             }
         }
@@ -265,8 +294,8 @@
         // Player Object
         class Player {
             constructor() {
-                this.w = 100; // width
-                this.h = 80;  // height
+                this.w = 100; 
+                this.h = 80;  
                 this.x = canvas.width / 2 - this.w / 2;
                 this.y = canvas.height - 100;
             }
@@ -274,22 +303,19 @@
             draw() {
                 // Draw a cute basket
                 ctx.fillStyle = '#ff4d6d';
-                
-                // Simple semi-circle basket
                 ctx.beginPath();
                 ctx.arc(this.x + this.w/2, this.y, this.w/2, 0, Math.PI, false);
                 ctx.fill();
                 
                 // Handle
                 ctx.beginPath();
-                ctx.strokeStyle = '#c9184a';
+                ctx.strokeStyle = '#a4133c'; // Darker luxury red
                 ctx.lineWidth = 5;
                 ctx.arc(this.x + this.w/2, this.y - 10, this.w/2, Math.PI, 0, false);
                 ctx.stroke();
             }
 
             update() {
-                // Mouse logic handles X directly, just boundary checks here
                 if (this.x < 0) this.x = 0;
                 if (this.x + this.w > canvas.width) this.x = canvas.width - this.w;
             }
@@ -298,11 +324,11 @@
         // Heart Object
         class Heart {
             constructor() {
-                this.size = Math.random() * 20 + 20; // 20-40px
+                this.size = Math.random() * 20 + 20; 
                 this.x = Math.random() * (canvas.width - this.size);
                 this.y = -this.size;
-                this.speed = Math.random() * 3 + 2; // 2-5 speed
-                this.color = `hsl(${Math.random() * 20 + 340}, 100%, 60%)`; // Pinkish/Red variations
+                this.speed = Math.random() * 3 + 2; 
+                this.color = `hsl(${Math.random() * 20 + 340}, 100%, 60%)`; 
             }
 
             draw() {
@@ -310,25 +336,21 @@
                 ctx.beginPath();
                 let topCurveHeight = this.size * 0.3;
                 ctx.moveTo(this.x, this.y + topCurveHeight);
-                // top left curve
                 ctx.bezierCurveTo(
                     this.x, this.y, 
                     this.x - this.size / 2, this.y, 
                     this.x - this.size / 2, this.y + topCurveHeight
                 );
-                // bottom left curve
                 ctx.bezierCurveTo(
                     this.x - this.size / 2, this.y + (this.size + topCurveHeight) / 2, 
                     this.x, this.y + (this.size + topCurveHeight) / 2, 
                     this.x, this.y + this.size
                 );
-                // bottom right curve
                 ctx.bezierCurveTo(
                     this.x, this.y + (this.size + topCurveHeight) / 2, 
                     this.x + this.size / 2, this.y + (this.size + topCurveHeight) / 2, 
                     this.x + this.size / 2, this.y + topCurveHeight
                 );
-                // top right curve
                 ctx.bezierCurveTo(
                     this.x + this.size / 2, this.y, 
                     this.x, this.y, 
@@ -372,12 +394,11 @@
         function handleInput(e) {
             if (!player || gameState !== 'PLAYING') return;
             
-            // Mouse / Touch
             let clientX;
             if (e.type === 'mousemove') {
                 clientX = e.clientX;
             } else if (e.type === 'touchmove') {
-                e.preventDefault(); // Stop scrolling on mobile
+                e.preventDefault(); 
                 clientX = e.touches[0].clientX;
             }
             
@@ -391,13 +412,13 @@
 
         // Game Functions
         function spawnHeart() {
-            if (Math.random() < 0.03) { // Slight increase in spawn rate
+            if (Math.random() < 0.03) { 
                 hearts.push(new Heart());
             }
         }
 
         function updateGame() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
             if (gameState === 'PLAYING') {
                 player.update();
@@ -410,13 +431,12 @@
                     heart.update();
                     heart.draw();
 
-                    // Collision Detection
+                    // Collision
                     if (
                         heart.y + heart.size > player.y &&
                         heart.x > player.x &&
                         heart.x < player.x + player.w
                     ) {
-                        // Catch!
                         hearts.splice(index, 1);
                         score++;
                         createParticles(heart.x, heart.y);
@@ -426,7 +446,7 @@
                             triggerProposal();
                         }
                     } else if (heart.y > canvas.height) {
-                        hearts.splice(index, 1); // Missed
+                        hearts.splice(index, 1); 
                     }
                 }
 
@@ -472,7 +492,6 @@
             startScreen.classList.remove('active');
             startScreen.classList.add('hidden');
             
-            // Ensure loop isn't running twice
             if(animationId) cancelAnimationFrame(animationId);
             updateGame();
         }
@@ -488,22 +507,20 @@
         });
 
         // "No" button runs away
-        // Use standard function instead of arrow to allow proper removal if needed, though not strictly necessary here.
         function moveNoButton() {
-            // Get viewport dimensions
             const maxX = window.innerWidth - noBtn.offsetWidth - 20;
             const maxY = window.innerHeight - noBtn.offsetHeight - 20;
             
             const x = Math.random() * maxX;
             const y = Math.random() * maxY;
             
-            noBtn.style.position = 'fixed'; // Switch to fixed to break out of layout
+            noBtn.style.position = 'fixed'; 
             noBtn.style.left = `${Math.max(20, x)}px`;
             noBtn.style.top = `${Math.max(20, y)}px`;
         }
 
         noBtn.addEventListener('mouseover', moveNoButton);
-        noBtn.addEventListener('touchstart', moveNoButton); // Mobile support
+        noBtn.addEventListener('touchstart', moveNoButton); 
 
         // Initialize
         resize();
